@@ -1,0 +1,255 @@
+/* ==========================================================================
+   NOVO: BOTÃO FLUTUANTE COM ANIMAÇÃO FLUIDA DE SOL / LUA E MODO CLARO
+   ========================================================================== */
+.theme-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(22, 22, 22, 0.85);
+    border: 1px solid var(--gold-border, rgba(212, 175, 55, 0.35));
+    cursor: pointer;
+    z-index: 9999;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                background-color 0.4s ease, 
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.12);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.theme-toggle-btn:active {
+    transform: scale(0.92);
+}
+
+.icon-wrapper {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sun-icon, .moon-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sun-icon {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+.moon-icon {
+    opacity: 0;
+    transform: scale(0.3) rotate(-90deg);
+}
+
+.sun-rays {
+    transform-origin: center;
+    animation: spinRays 12s linear infinite;
+}
+
+@keyframes spinRays {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ESTILOS DO MODO CLARO SOMBREADO */
+body.light-mode {
+    --bg-dark-radial: radial-gradient(circle at 50% 20%, #e8ecef 0%, #d5dce2 70%, #c2cbd3 100%);
+    --bg-card-glass: rgba(235, 240, 245, 0.85);
+    --text-primary: #1a1d20;
+    --text-secondary: #4a5568;
+    color: var(--text-primary);
+}
+
+body.light-mode::before {
+    background: radial-gradient(circle, rgba(180, 140, 30, 0.12) 0%, transparent 70%);
+}
+
+body.light-mode .theme-toggle-btn {
+    background: rgba(240, 244, 248, 0.9);
+    border-color: rgba(180, 140, 30, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .icon-wrapper {
+    transform: rotate(180deg);
+}
+
+body.light-mode .sun-icon {
+    opacity: 0;
+    transform: scale(0.3) rotate(90deg);
+}
+
+body.light-mode .moon-icon {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+body.light-mode .header-image,
+body.light-mode .service-list,
+body.light-mode .product-card,
+body.light-mode .product-selection-card,
+body.light-mode .checkout-card,
+body.light-mode .order-summary-box,
+body.light-mode .product-specs-block {
+    background: rgba(240, 244, 248, 0.82);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode .product-name,
+body.light-mode .service-info strong,
+body.light-mode .summary-value.white-text,
+body.light-mode .product-specs-block li strong {
+    color: #1a1d20 !important;
+}
+
+body.light-mode input, 
+body.light-mode select {
+    background: rgba(255, 255, 255, 0.8);
+    color: #1a1d20;
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .size-press-btn {
+    background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);
+    color: #1e293b;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .size-press-btn.active {
+    background: linear-gradient(135deg, #bf953f 0%, #aa771c 100%);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   NOVO: AJUSTE DE CONTRASTE E DINÂMICA DO MODO CLARO (DOM NERO)
+   ========================================================================== */
+
+/* 1. TEXTOS ESCUROS E ELEMENTOS REFINADOS NO MODO CLARO */
+body.light-mode {
+    --text-primary: #121619; /* Grafite profundo para alta leitura */
+    --text-secondary: #3a434b; /* Cinza escuro para textos secundários */
+    color: var(--text-primary);
+}
+
+/* 2. CABEÇALHO E LOGO DINÂMICOS (SEM BRANCO ABSOLUTO) */
+body.light-mode .header-image {
+    background: linear-gradient(180deg, #d8dfe5 0%, #c8d1d9 100%);
+    border-bottom: 1px solid rgba(180, 140, 30, 0.4);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+body.light-mode .logo {
+    /* Degradê dourado enriquecido com tom de bronze para destacar no fundo claro */
+    background: linear-gradient(135deg, #8a6418 0%, #b38728 50%, #6b4c0f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.light-mode .header-subtitle {
+    color: #333c44 !important;
+    font-weight: 600;
+}
+
+/* 3. BOTÕES VISÍVEIS E DESTACADOS DA TELA */
+body.light-mode .btn-reservar,
+body.light-mode .btn-comprar,
+body.light-mode .btn-comprar-dourado-vibrante {
+    background: linear-gradient(135deg, #b88e32 0%, #ecd880 50%, #9e7520 100%);
+    color: #080a0b !important; /* Texto escuro marcante */
+    font-weight: 800;
+    border: 1px solid #8a6418;
+    box-shadow: 0 6px 18px rgba(138, 100, 24, 0.35);
+}
+
+body.light-mode .btn-reservar:hover,
+body.light-mode .btn-comprar:hover,
+body.light-mode .btn-comprar-dourado-vibrante:hover {
+    box-shadow: 0 8px 22px rgba(138, 100, 24, 0.5);
+    transform: translateY(-2px);
+}
+
+/* 4. BOTÕES DE NAVEGAÇÃO E RETORNO (VOLTAR) */
+body.light-mode .btn-voltar-simples,
+body.light-mode .btn-voltar {
+    color: #6b4c0f !important;
+    border-color: rgba(138, 100, 24, 0.5);
+    background: rgba(255, 255, 255, 0.5);
+    font-weight: 700;
+}
+
+/* 5. CARDS DE SERVIÇOS E PRODUTOS (CONTRASTE ELEVADO) */
+body.light-mode .service-list,
+body.light-mode .product-card,
+body.light-mode .product-selection-card,
+body.light-mode .checkout-card {
+    background: rgba(228, 234, 240, 0.9);
+    border: 1px solid rgba(138, 100, 24, 0.25);
+    box-shadow: 0 12px 30px rgba(18, 22, 25, 0.12);
+}
+
+body.light-mode .product-name,
+body.light-mode .service-info strong,
+body.light-mode .option-label,
+body.light-mode .summary-label,
+body.light-mode .product-specs-block li {
+    color: #121619 !important;
+    font-weight: 600;
+}
+
+/* 6. BOTÕES DE TAMANHO, ENTREGA E PAGAMENTO (PRESSIONÁVEIS) */
+body.light-mode .size-press-btn {
+    background: linear-gradient(180deg, #dbe2e8 0%, #c4cfd8 100%);
+    color: #121619 !important;
+    border: 1px solid #a3b1bf;
+    box-shadow: 0 4px 0px #8e9cae, 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .size-press-btn.active {
+    background: linear-gradient(135deg, #b88e32 0%, #9e7520 100%);
+    color: #ffffff !important;
+    border-color: #6b4c0f;
+    box-shadow: 0 1px 0px #4a340a, 0 0 12px rgba(184, 142, 50, 0.4);
+}
+
+/* 7. PREÇOS E DESTAQUES DOURADOS NO MODO CLARO */
+body.light-mode .current-price,
+body.light-mode .price-highlight,
+body.light-mode .summary-value.gold-text,
+body.light-mode .gold-text {
+    color: #8a6418 !important;
+    font-weight: 800;
+}
+
+/* ==========================================================================
+   AJUSTE DE CONTRASTE DO VALOR TOTAL NO MODO CLARO (TELA DE RESUMO)
+   ========================================================================== */
+
+body.light-mode .total-price {
+    color: #8a6418 !important; /* Dourado escuro / Bronze nobre com alto contraste */
+    text-shadow: 0 2px 8px rgba(138, 100, 24, 0.25); /* Sombra suave para destacar no fundo claro */
+    font-weight: 900;
+}

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM NERO | Moda & Estilo Masculino</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="visual universal.css">
+    <link rel="stylesheet" href="botão.css">
+    <link rel="stylesheet" href="pagamento.css">
+</head>
+
+<body>
+
+ <!-- BOTÃO FLUTUANTE DE ALTERNÂNCIA DE TEMA (SOL E LUA ANIMADOS) -->
+ <button id="btn-toggle-tema" class="theme-toggle-btn" onclick="alternarTema()" aria-label="Alternar Tema">
+    <div class="icon-wrapper">
+        <!-- DESENHO ANIMADO DO SOL (MODO ESCURO ATIVO) -->
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5" fill="#FFD700" stroke="#FFAC1C" stroke-width="1.5"/>
+            <g class="sun-rays" stroke="#FFD700" stroke-width="2" stroke-linecap="round">
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </g>
+        </svg>
+
+        <!-- DESENHO ANIMADO DA LUA (MODO CLARO ATIVO) -->
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#90A4AE" stroke="#607D8B" stroke-width="1.5"/>
+            <circle cx="17" cy="8" r="1.5" fill="#FFD700"/>
+        </svg>
+    </div>
+
+ </button>
+    <!-- ================= TELA INICIAL (MENU DE BLOCOS) ================= -->
+    <div class="screen scroll-screen active" id="inicio" style="display: flex;">
+        <div class="header-image">
+            <div class="logo">DOM<span>NERO</span></div>
+            <div class="header-subtitle">Moda & Estilo Masculino</div>
+        </div>
+
+        <!-- BLOCO 1: CAMISAS MASCULINAS -->
+        <div class="service-list">
+            <div class="service-item">
+                <div class="service-thumb">
+                    <img src="fotos/camisas loja.jpeg" alt="Camisas Masculinas">
+                </div>
+                <div class="service-info">
+                    <strong>Opções de Camisas Masculinas</strong>
+                    <p>Camisas DryFit, camisetas basic e polo</p>
+                </div>
+                <div class="service-action">
+                    <button class="btn-reservar" onclick="abrirOpcoesRoupas('Camisas Masculinas')">
+                        Ver opções
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOCO 2: BERMUDAS MASCULINAS -->
+        <div class="service-list">
+            <div class="service-item">
+                <div class="service-thumb">
+                    <img src="fotos/bermuda loja.jpeg" alt="Bermudas Masculinas">
+                </div>
+                <div class="service-info">
+                    <strong>Opções de Bermudas Masculinas</strong>
+                    <p>Bermudas e esportivas</p>
+                </div>
+                <div class="service-action">
+                    <button class="btn-reservar" onclick="abrirOpcoesRoupas('Bermudas Masculinas')">
+                        Ver opções
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOCO 3: KITS MASCULINOS -->
+        <div class="service-list">
+            <div class="service-item">
+                <div class="service-thumb">
+                    <img src="fotos/kits loja.jpeg" alt="Kits Masculinos">
+                </div>
+                <div class="service-info">
+                    <strong>Kits Masculinos</strong>
+                    <p>Combos completos com camisa + bermuda</p>
+                </div>
+                <div class="service-action">
+                    <button class="btn-reservar" onclick="abrirOpcoesRoupas('Kits Masculinos')">
+                        Ver opções
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOCO 4: ACESSÓRIOS E MAIS -->
+        <div class="service-list">
+            <div class="service-item">
+                <div class="service-thumb">
+                    <img src="fotos/acessórios loja.jpeg" alt="Acessórios e mais">
+                </div>
+                <div class="service-info">
+                    <strong>Acessórios e mais</strong>
+                    <p>Variedades em óculos, bonés e outros acessórios masculinos</p>
+                </div>
+                <div class="service-action">
+                    <button class="btn-reservar" onclick="abrirOpcoesRoupas('Acessórios e mais')">
+                        Ver opções
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= CATÁLOGO BLOCO 1: CAMISAS MASCULINAS ================= -->
+    <div id="tela-camisas" class="scroll-screen">
+        <div class="header-image">
+            <div class="logo">DOM<span>NERO</span></div>
+            <div class="header-subtitle">Moda & Estilo Masculino</div>
+        </div>
+
+        <div class="catalog-container">
+            <button class="btn-voltar-simples" onclick="voltarInicio()">← Voltar ao Início</button>
+            <h2 class="category-title">Camisas Masculinas</h2>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image-wrap">
+                        <span class="product-badge">OFERTA IMPERDÍVEL</span>
+                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=80" alt="Camisa DryFit">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Camisa DryFit Performance Slim Fit</h3>
+                        <div class="price-box">
+                            <div class="current-price">R$ 89<span>,90</span></div>
+                        </div>
+                        <span class="shipping-tag">Frete grátis <b>FULL</b></span>
+                        <button class="btn-comprar" onclick="iniciarCompra('Camisa DryFit Performance Slim Fit', 'R$ 89,90', 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=80', 'Camisas')">
+                            Iniciar Compra
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrap">
+                        <span class="product-badge">OFERTA IMPERDÍVEL</span>
+                        <img src="fotos/camisas loja.jpeg" alt="Camisa DryFit">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">regata DryFit Performance Slim Fit</h3>
+                        <div class="price-box">
+                            <div class="current-price">R$ 89<span>,90</span></div>
+                        </div>
+                        <span class="shipping-tag">Frete grátis <b>FULL</b></span>
+                        <button class="btn-comprar" onclick="iniciarCompra('Camisa DryFit Performance Slim Fit', 'R$ 89,90', 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=80', 'Camisas')">
+                            Iniciar Compra
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrap">
+                        <span class="product-badge">MAIS VENDIDO</span>
+                        <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&auto=format&fit=crop&q=80" alt="Camiseta Basic">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Camiseta Basic 100% Algodão Pima</h3>
+                        <div class="price-box">
+                            <div class="current-price">R$ 74<span>,90</span></div>
+                        </div>
+                        <span class="shipping-tag">Frete grátis <b>FULL</b></span>
+                        <button class="btn-comprar" onclick="iniciarCompra('Camiseta Basic 100% Algodão Pima', 'R$ 74,90', 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&auto=format&fit=crop&q=80', 'Camisas')">
+                            Iniciar Compra
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1625910513413-2144703a45c7?w=500&auto=format&fit=crop&q=80" alt="Camisa Polo">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Camisa Polo Piquet Texturizada</h3>
+                        <div class="price-box">
+                            <div class="current-price">R$ 119<span>,90</span></div>
+                        </div>
+                        <span class="shipping-tag">Frete grátis <b>FULL</b></span>
+                        <button class="btn-comprar" onclick="iniciarCompra('Camisa Polo Piquet Texturizada', 'R$ 119,90', 'https://images.unsplash.com/photo-1625910513413-2144703a45c7?w=500&auto=format&fit=crop&q=80', 'Camisas')">
+                            Iniciar Compra
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrap">
+                        <span class="product-badge">NOVIDADE</span>
+                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500&auto=format&fit=crop&q=80" alt="Camiseta Oversized">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Camiseta Oversized Streetwear Black</h3>
+                        <div class="price-box">
+                            <div class="current-price">R$ 99<span>,90</span></div>
+                        </div>
+                        <span class="shipping-tag">Frete grátis <b>FULL</b></span>
+                        <button class="btn-comprar" onclick="iniciarCompra('Camiseta Oversized Streetwear Black', 'R$ 99,90', 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500&auto=format&fit=crop&q=80', 'Camisas')">
+                            Iniciar Compra
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= CATÁLOGO BLOCO 2: BERMUDAS MASCULINAS ================= -->
+    <div id="tela-bermudas" class="scroll-screen">
+        <div class="header-image">
+            <div class="logo">DOM<span>NERO</span></div>
+            <div class="header-subtitle">Moda & Estilo Masculino</div>
+        </div>
+
+        <div class="catalog-container">
+            <button class="btn-voltar-simples" onclick="voltarInicio()">← Voltar ao Início</button>
+            <h2 class="category-title">Bermudas Masculinas</h2>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image-wrap">
+                        <span class="product-badge">DESTAQUE</span>
+                        <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=500&auto=format&fit=crop&q=80" alt="Bermuda Esportiva">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Bermuda Esportiva DryTech com Bolso Zíper</h3>
+                        <div class="price-box">
+                            <div class="current-price">R$ 79<span>,90</span></div>
+                        </div>
+                        <span class="shipping-tag">Frete grátis <b>FULL</b></span>
+                        <button class="btn-comprar" onclick="iniciarCompra('Bermuda Esportiva DryTech com Bolso Zíper', 'R$ 79,90', 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=500&auto=format&fit=crop&q=80', 'Bermudas')">
+                            Iniciar Compra
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=500&auto=format&fit=crop&q=80" alt="Bermuda Sarja">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Bermuda Sarja Casual Chino Elastano</h3>
+                        <div class="price-box">
+                            <div class="current-price">R$ 109<span>,90</span></div>
+                        </div>
+                        <span class="shipping-tag">Frete grátis <b>FULL</b></span>
+                        <button class="btn-comprar" onclick="iniciarCompra('Bermuda Sarja Casual Chino Elastano', 'R$ 109,90', 'https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=500&auto=format&fit=crop&q=80', 'Bermudas')">
+                            Iniciar Compra
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrap">
+                        <span class="product-badge">OFERTA IMPERDÍVEL</span>
+                        <img src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=500&auto=format&fit=crop&q=80" alt="Short Tactel">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Short Tactel Premium Mauricinho</h3>
+                        <div class="price-box">
+                            <div class="current-price">R$ 64<span>,90</span></div>
+                        </div>
+                        <span class="shipping-tag">Frete grátis <b>FULL</b></span>
+                        <button class="btn-comprar" onclick="iniciarCompra('Short Tactel Premium Mauricinho', 'R$ 64,90', 'https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=500&auto=format&fit=crop&q=80', 'Bermudas')">
+                            Iniciar Compra
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500&auto=format&fit=crop&q=80" alt="Bermuda Jeans">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Bermuda Jeans Destroyed Slim Fit</h3>
+                        <div class="price-box">
+                            <div class="current-price">R$ 129<span>,90</span></div>
+                        </div>
+                        <span class="shipping-tag">Frete grátis <b>FULL</b></span>
+                        <button class="btn-comprar" onclick="iniciarCompra('Bermuda Jeans Destroyed Slim Fit', 'R$ 129,90', 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500&auto=format&fit=crop&q=80', 'Bermudas')">
+                            Iniciar Compra
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= CATÁLOGO BLOCO 3: KITS MASCULINOS ================= -->
+    <div id="tela-kits" class="scroll-screen">
+        <div class="header-image">
+            <div class="logo">DOM<span>NERO</span></div>
+            <div class="header-subtitle">Moda & Estilo Masculino</div>
+        </div>
+
+        <div class="catalog-container">
+            <button class="btn-voltar-simples" onclick="voltarInicio()">← Voltar ao Início</button>
+            <h2 class="category-title">Kits & Combos Masculinos</h2>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image-wrap">
+                        <span class="product-badge">CAMPEÃO DE VENDAS</span>
+                        <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&auto=format&fit=crop&q=80" alt="Kit Verão">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Kit Verão: 1 Camisa DryFit + 1 Bermuda</h3>
+                        <div class="price-box">
+                            <div class="current-price">R$ 149<span>,90</span></div>
+                        </div>
+                        <span class="shipping-tag">Frete grátis <b>FULL</b></span>
+                        <button class="btn-comprar" onclick="iniciarCompra('Kit Verão: 1 Camisa DryFit + 1 Bermuda', 'R$ 149,90', 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&auto=format&fit=crop&q=80', 'Kits')">
+                            Iniciar Compra
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrap">
+                        <span class="product-badge">DESCONTO PROGRESSIVO</span>
+                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=80" alt="Combo 3 Camisetas">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Combo 3 Camisetas Básicas Algodão Pima</h3>
+                        <div class="price-box">
+                            <div class="current-price">R$ 189<span>,90</span></div>
+                        </div>
+                        <span class="shipping-tag">Frete grátis <b>FULL</b></span>
+                        <button class="btn-comprar" onclick="iniciarCompra('Combo 3 Camisetas Básicas Algodão Pima', 'R$ 189,90', 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=80', 'Kits')">
+                            Iniciar Compra
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=500&auto=format&fit=crop&q=80" alt="Kit 2 Shorts">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Kit 2 Shorts Tactel Mauricinho</h3>
+                        <div class="price-box">
+                            <div class="current-price">R$ 119<span>,90</span></div>
+                        </div>
+                        <span class="shipping-tag">Frete grátis <b>FULL</b></span>
+                        <button class="btn-comprar" onclick="iniciarCompra('Kit 2 Shorts Tactel Mauricinho', 'R$ 119,90', 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=500&auto=format&fit=crop&q=80', 'Kits')">
+                            Iniciar Compra
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrap">
+                        <span class="product-badge">SUPER COMBO</span>
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&auto=format&fit=crop&q=80" alt="Kit Executive">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Kit Executive: 2 Polos + 1 Bermuda Sarja</h3>
+                        <div class="price-box">
+                            <div class="current-price">R$ 269<span>,90</span></div>
+                        </div>
+                        <span class="shipping-tag">Frete grátis <b>FULL</b></span>
+                        <button class="btn-comprar" onclick="iniciarCompra('Kit Executive: 2 Polos + 1 Bermuda Sarja', 'R$ 269,90', 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&auto=format&fit=crop&q=80', 'Kits')">
+                            Iniciar Compra
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= CATÁLOGO BLOCO 4: ACESSÓRIOS E MAIS ================= -->
+    <div id="tela-acessorios" class="scroll-screen">
+        <div class="header-image">
+            <div class="logo">DOM<span>NERO</span></div>
+            <div class="header-subtitle">Moda & Estilo Masculino</div>
+        </div>
+
+        <div class="catalog-container">
+            <button class="btn-voltar-simples" onclick="voltarInicio()">← Voltar ao Início</button>
+
+            <div class="service-list">
+                <h2 class="category-title">Acessórios masculinos e muito mais</h2>
+
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image-wrap">
+                            <span class="product-badge">DESTAQUE</span>
+                            <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?w=500&auto=format&fit=crop&q=80" alt="Relógio Esportivo Cyber Gold">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-name">Relógio Esportivo Cyber Gold</h3>
+                            <div class="price-box">
+                                <div class="current-price">R$ 149<span>,90</span></div>
+                            </div>
+                            <span class="shipping-tag">Frete grátis ⚡ <b>FULL</b></span>
+                            <button class="btn-comprar" onclick="iniciarCompra('Relógio Esportivo Cyber Gold', 'R$ 149,90', 'https://images.unsplash.com/photo-1622434641406-a158123450f9?w=500&auto=format&fit=crop&q=80', 'Acessórios')">
+                                Iniciar Compra
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image-wrap">
+                            <span class="product-badge">ED. LIMITADA</span>
+                            <img src="https://images.unsplash.com/photo-1611591475168-3c35849df3f7?w=500&auto=format&fit=crop&q=80" alt="Carteira Slim Couro Nappa">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-name">Carteira Slim Couro Nappa</h3>
+                            <div class="price-box">
+                                <div class="current-price">R$ 69<span>,90</span></div>
+                            </div>
+                            <span class="shipping-tag">Frete grátis ⚡ <b>FULL</b></span>
+                            <button class="btn-comprar" onclick="iniciarCompra('Carteira Slim Couro Nappa', 'R$ 69,90', 'https://images.unsplash.com/photo-1611591475168-3c35849df3f7?w=500&auto=format&fit=crop&q=80', 'Acessórios')">
+                                Iniciar Compra
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image-wrap">
+                            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&auto=format&fit=crop&q=80" alt="Óculos de Sol Polarizado Matte">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-name">Óculos de Sol Polarizado Matte</h3>
+                            <div class="price-box">
+                                <div class="current-price">R$ 89<span>,90</span></div>
+                            </div>
+                            <span class="shipping-tag">Frete grátis ⚡ <b>FULL</b></span>
+                            <button class="btn-comprar" onclick="iniciarCompra('Óculos de Sol Polarizado Matte', 'R$ 89,90', 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&auto=format&fit=crop&q=80', 'Acessórios')">
+                                Iniciar Compra
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TELA COMPARTILHADA: SELEÇÃO DO PRODUTO ================= -->
+    <div id="tela-detalhes-produto" class="scroll-screen">
+        <div class="header-image">
+            <div class="logo">DOM<span>NERO</span></div>
+            <div class="header-subtitle">Moda & Estilo Masculino</div>
+        </div>
+
+        <div class="catalog-container">
+            <button class="btn-voltar-simples" onclick="voltarParaCatalogo()">← Voltar ao Catálogo</button>
+
+            <div class="product-selection-card">
+                <div class="product-selection-image">
+                    <img id="detalhe-foto" src="" alt="Produto Selecionado">
+                </div>
+
+                <div class="product-selection-info">
+                    <h2 id="detalhe-nome" class="product-title-detail">Nome do Produto</h2>
+                    
+                    <div class="price-box-detail">
+                        <span class="price-highlight" id="detalhe-preco">R$ 0,00</span>
+                        <span class="payment-sub">no Pix ou Cartão</span>
+                    </div>
+
+                    <!-- SELEÇÃO DE COR DINÂMICA (VAZIO PARA O JS GERAR) -->
+                    <div class="option-group">
+                        <label class="option-label">Selecione a Cor: <span id="label-cor-selecionada" class="gold-text">Preto</span></label>
+                        <div class="color-swatches-container" id="container-bolinhas-cores">
+                            <!-- O JS desenha e alterna as cores dinamicamente aqui -->
+                        </div>
+                    </div>
+
+                    <!-- SELEÇÃO DE TAMANHO -->
+                    <div class="option-group">
+                        <label class="option-label">Selecione o Tamanho:</label>
+                        <div class="sizes-press-container">
+                            <button class="size-press-btn" onclick="selecionarTamanho(this, 'P (36)')">P</button>
+                            <button class="size-press-btn active" onclick="selecionarTamanho(this, 'M (38-40)')">M</button>
+                            <button class="size-press-btn" onclick="selecionarTamanho(this, 'G (42)')">G</button>
+                            <button class="size-press-btn" onclick="selecionarTamanho(this, 'GG (44-46)')">GG</button>
+                        </div>
+                    </div>
+
+                    <button class="btn-comprar-dourado-vibrante" onclick="irParaFinalizacao()">
+                        Comprar Agora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TELA: RESUMO DO PEDIDO E CHECKOUT ================= -->
+    <div id="tela-finalizacao" class="scroll-screen">
+        <div class="header-image">
+            <div class="logo">DOM<span>NERO</span></div>
+            <div class="header-subtitle">Moda & Estilo Masculino</div>
+        </div>
+
+        <div class="catalog-container">
+            <button class="btn-voltar-simples" onclick="voltarParaDetalhes()">← Alterar Opções</button>
+
+            <div class="checkout-card">
+                <h2 class="category-title">Resumo do Pedido</h2>
+
+                <div class="order-summary-box">
+                    <div class="summary-header">
+                        <span class="summary-badge">ITEM SELECIONADO</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Produto:</span>
+                        <span id="resumo-nome" class="summary-value white-text">-</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Cor Escolhida:</span>
+                        <span id="resumo-cor" class="summary-value gold-text">-</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Tamanho:</span>
+                        <span id="resumo-tamanho" class="summary-value gold-text">-</span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-row total-row">
+                        <span class="summary-label">Valor Total:</span>
+                        <span id="resumo-preco" class="summary-value total-price">-</span>
+                    </div>
+                </div>
+
+                <div class="product-specs-block">
+                    <h3>📋 Especificações do Produto</h3>
+                    <ul id="specs-list"></ul>
+                </div>
+
+                <div class="option-group">
+                    <label class="option-label">Forma de Entrega / Retirada:</label>
+                    <div class="sizes-press-container">
+                        <button class="size-press-btn active" onclick="selecionarEntrega(this, 'Entrega via Frete / Motoboy')"> Frete / Motoboy</button>
+                        <button class="size-press-btn" onclick="selecionarEntrega(this, 'Retirada na Loja Física')"> Retirada na Loja</button>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <label class="option-label">Forma de Pagamento Desejada:</label>
+                    <div class="sizes-press-container">
+                        <button class="size-press-btn active" onclick="selecionarPagamento(this, 'PIX')"> PIX</button>
+                        <button class="size-press-btn" onclick="selecionarPagamento(this, 'Cartão de Crédito / Débito')"> Cartão</button>
+                        <button class="size-press-btn" onclick="selecionarPagamento(this, 'Cédulas (Dinheiro)')"> Dinheiro</button>
+                    </div>
+                </div>
+
+                <button class="btn-whatsapp-finalizar" onclick="enviarPedidoWhatsApp()">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.157 4.228 4.301-1.127z"/>
+                    </svg>
+                    Finalizar Compra via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="opções.js"></script>
+    <script src="pagamento.js"></script>
+</body>
+</html>

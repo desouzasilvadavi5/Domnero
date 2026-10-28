@@ -1,0 +1,215 @@
+/* ==========================================================================
+   DOM NERO - ANIMAÇÃO FLASH E TRANSIÇÃO DA TELA DE PAGAMENTO
+   ========================================================================== */
+
+.payment-gateway-container {
+    background: rgba(15, 15, 15, 0.65);
+    border: 1px solid var(--gold-border, rgba(212, 175, 55, 0.35));
+    border-radius: 18px;
+    padding: 18px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efeito Flash ao Selecionar o Pix */
+.flash-in {
+    animation: pixFlashIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pixFlashIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+        filter: brightness(1.8);
+    }
+    50% {
+        filter: brightness(1.3);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: brightness(1);
+    }
+}
+
+.payment-gateway-title {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    color: var(--gold-solid, #d4af37);
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.key-box-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.key-code-display {
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px dashed var(--gold-solid, #d4af37);
+    color: #00ff88;
+    padding: 14px;
+    border-radius: 12px;
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 2px;
+    user-select: all;
+}
+
+.btn-copiar-chave {
+    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #aa771c 100%);
+    color: #0d0e0f;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-copiar-chave:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+}
+
+.btn-copiar-chave:active {
+    transform: scale(0.97);
+}
+
+.btn-whatsapp-acompanhar {
+    background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
+    color: #ffffff !important;
+    border: none;
+    padding: 16px 20px;
+    border-radius: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-whatsapp-acompanhar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+}
+
+.btn-whatsapp-acompanhar:active {
+    transform: translateY(2px) scale(0.98);
+}
+
+/* ==========================================================================
+   CONTROLE DE QUANTIDADE (+ e -) NA TELA DE SELEÇÃO
+   ========================================================================== */
+.quantity-control-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(10, 10, 10, 0.7);
+    border: 1px solid var(--gold-border, rgba(212, 175, 55, 0.35));
+    border-radius: 14px;
+    padding: 6px 14px;
+    width: fit-content;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-qty-minus,
+.btn-qty-plus {
+    background: linear-gradient(135deg, #bf953f 0%, #aa771c 100%);
+    color: #000;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-qty-minus:hover,
+.btn-qty-plus:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.btn-qty-minus:active,
+.btn-qty-plus:active {
+    transform: scale(0.92);
+}
+
+.qty-number-display {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    min-width: 24px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   ADAPTAÇÃO DO BLOCO DE PAGAMENTO VIA PIX PARA O MODO CLARO
+   ========================================================================== */
+
+/* 1. Ajuste de fundo e borda do container do Pix */
+body.light-mode .payment-gateway-container {
+    background: rgba(240, 244, 248, 0.95) !important;
+    border-color: rgba(138, 100, 24, 0.35) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* 2. Título "Pagamento Instantâneo via Pix" */
+body.light-mode .payment-gateway-title {
+    color: #8a6418 !important; /* Bronze/Dourado escuro com alto contraste */
+    font-weight: 800;
+}
+
+/* 3. Caixa do Código/CPF da chave Pix */
+body.light-mode .key-code-display {
+    background: #1a1d20 !important; /* Fundo escuro fosco para a chave continuar destacada */
+    border-color: #8a6418 !important;
+    color: #00ff88 !important; /* Mantém o texto verde reluzente do código bem legível */
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 4. Textos auxiliares e instruções dentro do bloco */
+body.light-mode .key-box-wrapper span,
+body.light-mode .payment-gateway-container p {
+    color: #3a434b !important; /* Texto escuro/grafite de fácil leitura */
+    font-weight: 600;
+}
+
+/* 5. Botão "Copiar Chave Pix" no modo claro */
+body.light-mode .btn-copiar-chave {
+    background: linear-gradient(135deg, #b88e32 0%, #ecd880 50%, #9e7520 100%) !important;
+    color: #080a0b !important;
+    border: 1px solid #8a6418 !important;
+    box-shadow: 0 4px 15px rgba(138, 100, 24, 0.3) !important;
+}
+
+body.light-mode .btn-copiar-chave:hover {
+    box-shadow: 0 6px 20px rgba(138, 100, 24, 0.45) !important;
+}
